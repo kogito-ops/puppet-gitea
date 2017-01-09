@@ -1,0 +1,11 @@
+---
+HOSTS:
+  fedora24-64-1:
+    roles:
+    - master
+    platform: fedora-24-x86_64
+    hypervisor: vagrant
+    box: fedora/24-cloud-base
+CONFIG:
+  type: foss
+...

@@ -1,0 +1,15 @@
+---
+HOSTS:
+  centos7-64-1:
+    roles:
+      - master
+    platform: fedora-24-x86_64
+    hypervisor: docker
+    image: fedora:24
+    docker_preserve_image: true
+    docker_cmd: '["/usr/sbin/init"]'
+    docker_image_commands:
+      - 'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which'
+CONFIG:
+  type: foss
+...

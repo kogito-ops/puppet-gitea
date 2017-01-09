@@ -1,0 +1,15 @@
+---
+HOSTS:
+  centos6-64-1:
+    roles:
+      - master
+    platform: el-6-x86_64
+    hypervisor: docker
+    image: centos:6
+    docker_preserve_image: true
+    docker_cmd: '["/usr/sbin/init"]'
+    docker_image_commands:
+      - 'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which'
+CONFIG:
+  type: foss
+...
