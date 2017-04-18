@@ -1,20 +1,20 @@
-require 'puppetlabs_spec_helper/rake_tasks'
-require 'puppet_blacksmith/rake_tasks'
-require 'puppet-lint/tasks/puppet-lint'
-require 'puppet-strings/tasks'
-require 'metadata-json-lint/rake_task'
+require 'puppetlabs_spec_helper/rake_tasks.rb'
+require 'puppet_blacksmith/rake_tasks.rb'
+require 'puppet-lint/tasks/puppet-lint.rb'
+require 'puppet-strings/tasks.rb'
+require 'metadata-json-lint/rake_task.rb'
 
 if RUBY_VERSION >= '1.9'
-  require 'rubocop/rake_task'
+  require 'rubocop/rake_task.rb'
   RuboCop::RakeTask.new
 end
 
-exclude_paths = %w(
+exclude_paths = %w[
   pkg/**/*
   vendor/**/*
   .vendor/**/*
   spec/**/*
-)
+]
 
 PuppetLint.configuration.log_format = '%{path}:%{line}:%{check}:%{KIND}:%{message}'
 PuppetLint.configuration.fail_on_warnings = true
@@ -40,9 +40,9 @@ task :validate do
   end
 end
 
-desc 'Run metadata_lint, lint, validate, and spec tests.'
+desc 'Run metadata_lint, lint, rubocop, validate, and spec tests.'
 task :test do
-  [:metadata_lint, :lint, :validate, :spec].each do |test|
+  [:metadata_lint, :lint, :validate, :rubocop, :spec].each do |test|
     Rake::Task[test].invoke
   end
 end

@@ -84,8 +84,6 @@ Quickstart:
 ```bash
 $ gem install bundler
 $ bundle install
-$ bundle exec rake lint
-$ bundle exec rake validate
 $ bundle exec rake test
 ```
 

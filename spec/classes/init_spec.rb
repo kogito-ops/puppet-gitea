@@ -17,7 +17,6 @@ describe 'gitea', type: :class do
       options = os_specific_options(facts)
       context 'with all defaults' do
         it { is_expected.to contain_class('gitea') }
-        it { is_expected.to contain_class('gitea::params') }
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_anchor('gitea::begin') }
         it { is_expected.to contain_anchor('gitea::end') }
