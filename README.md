@@ -41,13 +41,6 @@ class { 'gitea':
 }
 ```
 
-### Class: `gitea::params`
-
-```puppet
-class { 'gitea::params':
-}
-```
-
 ### Class: `gitea::install`
 
 ```puppet

@@ -1,1 +1,4 @@
 ---
+gitea::package_ensure: true
+gitea::package_install_options: []
+gitea::manage_package: true

@@ -24,10 +24,10 @@
 # Copyright 2016 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea (
-  $package_ensure          = $gitea::params::package_ensure,
-  $package_install_options = $gitea::params::package_install_options,
-  $manage_package          = $gitea::params::manage_package,
-  ) inherits gitea::params {
+  $package_ensure,
+  $package_install_options,
+  $manage_package,
+  ) {
 
   class { '::gitea::install':
     package_install_options => $package_install_options,
