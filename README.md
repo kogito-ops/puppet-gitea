@@ -7,9 +7,10 @@
 
 ## Description
 
-A Puppet module for managing Gitea settings. This module allows you to
-install and configure Gitea using operating system specific facilities with
-just a single parameter.
+A Puppet module for managing [Gitea][gitea] (Git with a cup of tea) settings.
+This module allows you to install and configure Gitea using pre-built binaries
+and does not need external package repositories. You can chose to install Gitea
+with default settings, or customize all settings to your liking.
 
 ## Setup
 
@@ -84,6 +85,7 @@ $ bundle exec rake test
 When submitting pull requests, please make sure that module documentation,
 test cases and syntax checks pass.
 
+[gitea]: https://github.com/go-gitea/gitea
 [puppetlabs-stdlib]: https://github.com/puppetlabs/puppetlabs-stdlib
 [puppetlabs-inifile]: https://github.com/puppetlabs/puppetlabs-inifile
 [lwf-remote_file]: https://github.com/lwf/puppet-remote_file
