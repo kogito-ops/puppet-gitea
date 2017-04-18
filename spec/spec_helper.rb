@@ -26,5 +26,3 @@ RSpec.configure do |c|
   default_facts.merge!(YAML.safe_load(File.read(File.expand_path('../default_module_facts.yml', __FILE__)))) if File.exist?(File.expand_path('../default_module_facts.yml', __FILE__))
   c.default_facts = default_facts
 end
-
-require 'spec_helper_methods'
