@@ -38,7 +38,7 @@ class gitea (
   anchor { 'gitea::begin': }
   anchor { 'gitea::end': }
 
-  Anchor['gitea::begin'] ->
-  Class['gitea::install'] ->
-  Class['gitea::config']
+  Anchor['gitea::begin']
+  -> Class['gitea::install']
+  -> Class['gitea::config']
 }
