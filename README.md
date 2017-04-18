@@ -1,7 +1,6 @@
 # puppet-gitea
 
 [![Build Status][build-shield]][build-status]
-[![Code Coverage][coverage-shield]][coverage-status]
 [![Puppet Forge][forge-shield]][forge-gitea]
 [![Puppet Forge - downloads][forge-shield-dl]][forge-gitea]
 [![Puppet Forge - scores][forge-shield-sc]][forge-gitea]
@@ -18,6 +17,8 @@ just a single parameter.
 
 *   `puppet-gitea` depends on
     *   [puppetlabs-stdlib][puppetlabs-stdlib],
+    *   [puppetlabs-inifile][puppetlabs-inifile],
+    *   [lwf-remote_file][lwf-remote_file],
 
 ### Beginning with Gitea
 
@@ -84,12 +85,12 @@ When submitting pull requests, please make sure that module documentation,
 test cases and syntax checks pass.
 
 [puppetlabs-stdlib]: https://github.com/puppetlabs/puppetlabs-stdlib
+[puppetlabs-inifile]: https://github.com/puppetlabs/puppetlabs-inifile
+[lwf-remote_file]: https://github.com/lwf/puppet-remote_file
 [puppet-rspec]: http://rspec-puppet.com/
 
 [build-status]: https://travis-ci.org/kogitoapp/puppet-gitea
 [build-shield]: https://travis-ci.org/kogitoapp/puppet-gitea.png?branch=master
-[coverage-shield]: https://coveralls.io/repos/github/kogitoapp/puppet-gitea/badge.svg?branch=master
-[coverage-status]: https://coveralls.io/github/kogitoapp/puppet-gitea
 [forge-gitea]: https://forge.puppetlabs.com/kogitoapp/gitea
 [forge-shield]: https://img.shields.io/puppetforge/v/kogitoapp/gitea.svg
 [forge-shield-dl]: https://img.shields.io/puppetforge/dt/kogitoapp/gitea.svg
