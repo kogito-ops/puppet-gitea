@@ -56,5 +56,9 @@ describe 'gitea class' do
     describe file('/lib/systemd/system/gitea.service') do
       it { is_expected.to be_file }
     end
+
+    describe port(3000) do
+      it { is_expected.to be_listening }
+    end
   end
 end

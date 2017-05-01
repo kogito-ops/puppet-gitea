@@ -47,6 +47,20 @@ class { 'gitea':
 }
 ```
 
+### Class: `gitea::packages`
+
+```puppet
+class { 'gitea::packages':
+}
+```
+
+### Class: `gitea::user`
+
+```puppet
+class { 'gitea::user':
+}
+```
+
 ### Class: `gitea::install`
 
 ```puppet
