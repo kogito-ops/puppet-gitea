@@ -32,10 +32,17 @@
 # Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::service (
-  $manage_service   = $gitea::manage_service,
-  $service_template = $gitea::service_template,
-  $service_path     = $gitea::service_path,
-  $service_provider = $gitea::service_provider,
-  $service_mode     = $gitea::service_mode,
+  $manage_service         = $gitea::manage_service,
+  $service_provider       = $gitea::service_provider,
+  $installation_directory = $gitea::installation_directory,
   ) {
+
+  if ($manage_service) {
+    service { 'gitea':
+      ensure    => 'running',
+      enable    => true,
+      provider  => $service_provider,
+      subscribe => File[$installation_directory],
+    }
+  }
 }
