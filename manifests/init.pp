@@ -42,6 +42,12 @@ class gitea (
   $repository_root,
 
   $configuration_sections,
+
+  $manage_service,
+  $service_template,
+  $service_path,
+  $service_provider,
+  $service_mode,
   ) {
 
   class { '::gitea::packages': }

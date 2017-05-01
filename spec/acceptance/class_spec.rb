@@ -52,5 +52,9 @@ describe 'gitea class' do
     describe file('/var/git') do
       it { is_expected.to be_directory }
     end
+
+    describe file('/lib/systemd/system/gitea.service') do
+      it { is_expected.to be_file }
+    end
   end
 end

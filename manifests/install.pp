@@ -31,6 +31,21 @@
 # * `repository_root`
 # Directory where gitea will keep all git repositories. Default: '/var/git'
 #
+# * `manage_service`
+# Should we manage a service definition for Gitea?
+#
+# * `service_template`
+# Path to service template file.
+#
+# * `service_path`
+# Where to create the service definition.
+#
+# * `service_provider`
+# Which service provider do we use?
+#
+# * `service_mode`
+# File mode for the created service definition.
+#
 # Authors
 # -------
 #
@@ -51,6 +66,12 @@ class gitea::install (
   $checksum_type          = $gitea::checksum_type,
   $installation_directory = $gitea::installation_directory,
   $repository_root        = $gitea::repository_root,
+
+  $manage_service         = $gitea::manage_service,
+  $service_template       = $gitea::service_template,
+  $service_path           = $gitea::service_path,
+  $service_provider       = $gitea::service_provider,
+  $service_mode           = $gitea::service_mode,
   ) {
 
   file { $repository_root:
@@ -106,5 +127,13 @@ class gitea::install (
   exec { "permissions:${repository_root}":
     command     => "/bin/chown -Rf ${owner}:${group} ${repository_root}",
     refreshonly => true,
+  }
+
+  if ($manage_service) {
+    file { "service:${service_path}":
+      path    => $service_path,
+      content => template($service_template),
+      mode    => $service_mode,
+    }
   }
 }

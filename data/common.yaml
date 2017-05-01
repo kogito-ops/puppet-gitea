@@ -14,3 +14,8 @@ gitea::checksum_type: 'sha256'
 gitea::installation_directory: '/opt/gitea'
 gitea::repository_root: '/var/git'
 gitea::configuration_sections: {}
+gitea::manage_service: true
+gitea::service_template: 'gitea/systemd.erb'
+gitea::service_path: '/lib/systemd/system/gitea.service'
+gitea::service_provider: 'systemd'
+gitea::service_mode: '0644'

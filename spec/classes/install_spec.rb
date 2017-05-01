@@ -17,7 +17,12 @@ describe 'gitea::install', type: :class do
             owner: 'git',
             group: 'git',
             installation_directory: '/opt/gitea',
-            repository_root: '/var/git'
+            repository_root: '/var/git',
+            manage_service: true,
+            service_template: 'gitea/systemd.erb',
+            service_path: '/lib/systemd/system/gitea.service',
+            service_provider: 'systemd',
+            service_mode: '0644'
           }
         end
 
@@ -26,6 +31,7 @@ describe 'gitea::install', type: :class do
         it { is_expected.to contain_file('/opt/gitea/data') }
         it { is_expected.to contain_file('/opt/gitea/log') }
         it { is_expected.to contain_file('/var/git') }
+        it { is_expected.to contain_file('service:/lib/systemd/system/gitea.service') }
         it { is_expected.to contain_exec('permissions:/opt/gitea') }
         it { is_expected.to contain_exec('permissions:/opt/gitea/gitea') }
         it { is_expected.to contain_exec('permissions:/var/git') }
