@@ -12,5 +12,45 @@ describe 'gitea class' do
       apply_manifest(pp, catch_failures: true)
       apply_manifest(pp, catch_changes: true)
     end
+
+    describe group('git') do
+      it { is_expected.to exist }
+    end
+
+    describe user('git') do
+      it { is_expected.to exist }
+    end
+
+    describe file('/opt/gitea') do
+      it { is_expected.to be_directory }
+    end
+
+    describe file('/opt/gitea/custom') do
+      it { is_expected.to be_directory }
+    end
+
+    describe file('/opt/gitea/custom/conf') do
+      it { is_expected.to be_directory }
+    end
+
+    describe file('/opt/gitea/custom/conf/app.ini') do
+      it { is_expected.to be_file }
+    end
+
+    describe file('/opt/gitea/data') do
+      it { is_expected.to be_directory }
+    end
+
+    describe file('/opt/gitea/log') do
+      it { is_expected.to be_directory }
+    end
+
+    describe file('/opt/gitea/gitea') do
+      it { is_expected.to be_file }
+    end
+
+    describe file('/var/git') do
+      it { is_expected.to be_directory }
+    end
   end
 end

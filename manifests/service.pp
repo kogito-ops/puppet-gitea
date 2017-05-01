@@ -14,7 +14,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2016 Daniel S. Reichenbach <https://kogitoapp.com>
+# Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::service (
   ) {

@@ -21,24 +21,43 @@
 # Copyright
 # ---------
 #
-# Copyright 2016 Daniel S. Reichenbach <https://kogitoapp.com>
+# Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea (
   $package_ensure,
-  $package_install_options,
-  $manage_package,
+  $dependencies_ensure,
+  $dependencies,
+
+  $manage_user,
+  $manage_group,
+  $manage_home,
+  $owner,
+  $group,
+  $home,
+
+  $version,
+  $checksum,
+  $checksum_type,
+  $installation_directory,
+  $repository_root,
+
+  $configuration_sections,
   ) {
 
-  class { '::gitea::install':
-    package_install_options => $package_install_options,
-  }
+  class { '::gitea::packages': }
+  class { '::gitea::user': }
+  class { '::gitea::install': }
 
   class { '::gitea::config': }
+  class { '::gitea::service': }
 
   anchor { 'gitea::begin': }
   anchor { 'gitea::end': }
 
   Anchor['gitea::begin']
+  -> Class['gitea::packages']
+  -> Class['gitea::user']
   -> Class['gitea::install']
   -> Class['gitea::config']
+  ~> Class['gitea::service']
 }

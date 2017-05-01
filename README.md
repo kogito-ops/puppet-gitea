@@ -20,6 +20,10 @@ with default settings, or customize all settings to your liking.
     *   [puppetlabs-stdlib][puppetlabs-stdlib],
     *   [puppetlabs-inifile][puppetlabs-inifile],
     *   [lwf-remote_file][lwf-remote_file],
+*   it install dependencies for gitea: `curl`, `git` and `tar`
+*   it manages a user and group `git`
+*   it manages the gitea directory (`/opt/gitea`) and the repositories (`/var/git`)
+*   it install a `gitea` service listening on port `3000`
 
 ### Beginning with Gitea
 
