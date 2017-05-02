@@ -59,8 +59,6 @@ class gitea::user (
   }
 
   if ($manage_user) {
-    validate_absolute_path($homedir)
-
     user { $owner:
       ensure     => present,
       gid        => $group,
