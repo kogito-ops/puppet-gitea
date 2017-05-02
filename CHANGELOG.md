@@ -1,3 +1,9 @@
+## (NOT YET RELEASED) 1.0.1
+
+### Maintenance
+
+*   Updated Travis build settings
+
 ## (2017-05-02) Release 1.0.0
 
 Initial release of Gitea management module! Hurra!
