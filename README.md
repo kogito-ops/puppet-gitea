@@ -34,16 +34,32 @@ including the class:
 include ::gitea
 ```
 
-## Usage
-
-TODO
-
 ## Reference
 
 ### Class: `gitea`
 
 ```puppet
 class { 'gitea':
+    package_ensure => 'present',
+    dependencies_ensure => 'present',
+    dependencies => ['curl', 'git', 'tar'],
+    manage_user => true,
+    manage_group => true,
+    manage_home => true,
+    owner => 'git',
+    group => 'git',
+    home => '/home/git',
+    version => '1.1.0',
+    checksum => '59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d556',
+    checksum_type => 'sha256',
+    installation_directory => '/opt/gitea',
+    repository_root => '/var/git',
+    configuration_sections => {},
+    manage_service => true,
+    service_template => 'gitea/systemd.erb',
+    service_path => '/lib/systemd/system/gitea.service',
+    service_provider => 'systemd',
+    service_mode => '0644',
 }
 ```
 
@@ -51,6 +67,8 @@ class { 'gitea':
 
 ```puppet
 class { 'gitea::packages':
+    dependencies_ensure => 'present',
+    dependencies => ['curl', 'git', 'tar'],
 }
 ```
 
@@ -58,6 +76,12 @@ class { 'gitea::packages':
 
 ```puppet
 class { 'gitea::user':
+    manage_user => true,
+    manage_group => true,
+    manage_home => true,
+    owner => 'git',
+    group => 'git',
+    home => '/home/git',
 }
 ```
 
@@ -65,6 +89,19 @@ class { 'gitea::user':
 
 ```puppet
 class { 'gitea::install':
+    package_ensure => 'present',
+    owner => 'git',
+    group => 'git',
+    version => '1.1.0',
+    checksum => '59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d556',
+    checksum_type => 'sha256',
+    installation_directory => '/opt/gitea',
+    repository_root => '/var/git',
+    manage_service => true,
+    service_template => 'gitea/systemd.erb',
+    service_path => '/lib/systemd/system/gitea.service',
+    service_provider => 'systemd',
+    service_mode => '0644',
 }
 ```
 
@@ -72,14 +109,22 @@ class { 'gitea::install':
 
 ```puppet
 class { 'gitea::service':
-
+    manage_service => true,
+    service_provider => 'systemd',
+    installation_directory => '/opt/gitea',
+}
 ```
 
 ### Class: `gitea::config`
 
 ```puppet
 class { 'gitea::config':
-
+    configuration_sections => {},
+    owner => 'git',
+    group => 'git',
+    installation_directory => '/opt/gitea',
+    repository_root => '/var/git',
+}
 ```
 
 ## Limitations

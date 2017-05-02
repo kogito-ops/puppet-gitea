@@ -9,17 +9,11 @@
 # * `manage_service`
 # Should we manage a service definition for Gitea?
 #
-# * `service_template`
-# Path to service template file.
-#
-# * `service_path`
-# Where to create the service definition.
-#
 # * `service_provider`
 # Which service provider do we use?
 #
-# * `service_mode`
-# File mode for the created service definition.
+# * `installation_directory`
+# Target directory to hold the gitea installation. Default: '/opt/gitea'
 #
 # Authors
 # -------

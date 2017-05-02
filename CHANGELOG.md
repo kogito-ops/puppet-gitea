@@ -1,11 +1,11 @@
-## (NOT YET RELEASED) Release 1.0.0
+## (2017-05-02) Release 1.0.0
 
 Initial release of Gitea management module! Hurra!
 
 ### New features
 
 *   support package and configuration of Gitea on Debian, Ubuntu, CentOS,
-    RHEL, and Fedora
+    RHEL.
 
 ### Bug fixes
 
