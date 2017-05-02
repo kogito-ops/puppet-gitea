@@ -1,4 +1,4 @@
-## (NOT YET RELEASED) 1.0.1
+## (2017-05-02) 1.0.1
 
 ### Maintenance
 
