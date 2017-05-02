@@ -26,7 +26,7 @@ describe 'gitea::install', type: :class do
           }
         end
 
-        it { is_expected.to contain_remote_file('/opt/gitea/gitea') }
+        it { is_expected.to contain_remote_file('gitea') }
         it { is_expected.to contain_file('/opt/gitea') }
         it { is_expected.to contain_file('/opt/gitea/data') }
         it { is_expected.to contain_file('/opt/gitea/log') }

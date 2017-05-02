@@ -103,29 +103,48 @@ class gitea::install (
   if ($package_ensure) {
     $kernel_down=downcase($::kernel)
 
-    remote_file { "${$installation_directory}/gitea":
+    case $::architecture {
+      /(x86_64)/: {
+        $arch = 'amd64'
+      }
+      /(x86)/: {
+        $arch = '386'
+      }
+      default: {
+        $arch = $::architecture
+      }
+    }
+
+    $source_url="https://github.com/go-gitea/gitea/releases/download/v${version}/gitea-${version}-${kernel_down}-${arch}"
+
+    remote_file { 'gitea':
       ensure        => $package_ensure,
-      source        => "https://github.com/go-gitea/gitea/releases/download/v${version}/gitea-${version}-${kernel_down}-${::architecture}",
+      path          => "${installation_directory}/gitea",
+      source        => $source_url,
       checksum      => $checksum,
       checksum_type => $checksum_type,
       notify        => [
-        Exec["permissions:${$installation_directory}/gitea"]
+        Exec["permissions:${$installation_directory}/gitea"],
+        Service['gitea']
       ],
     }
   }
 
   exec { "permissions:${installation_directory}":
-    command     => "/bin/chown -Rf ${owner}:${group} ${installation_directory}",
+    command     => "chown -Rf ${owner}:${group} ${installation_directory}",
+    path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     refreshonly => true,
   }
 
   exec { "permissions:${$installation_directory}/gitea":
-    command     => "/bin/chmod +x ${$installation_directory}/gitea",
+    command     => "chmod +x ${$installation_directory}/gitea",
+    path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     refreshonly => true,
   }
 
   exec { "permissions:${repository_root}":
-    command     => "/bin/chown -Rf ${owner}:${group} ${repository_root}",
+    command     => "chown -Rf ${owner}:${group} ${repository_root}",
+    path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     refreshonly => true,
   }
 
