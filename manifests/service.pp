@@ -39,10 +39,12 @@ class gitea::service (
 
   if ($manage_service) {
     service { 'gitea':
-      ensure    => 'running',
-      enable    => true,
-      provider  => $service_provider,
-      subscribe => File[$installation_directory],
+      ensure     => 'running',
+      enable     => true,
+      hasstatus  => false,
+      hasrestart => false,
+      provider   => $service_provider,
+      subscribe  => Remote_File['gitea'],
     }
   }
 }
