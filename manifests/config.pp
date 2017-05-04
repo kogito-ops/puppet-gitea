@@ -21,6 +21,9 @@
 # * `repository_root`
 # Directory where gitea will keep all git repositories. Default: '/var/git'
 #
+# * `log_directory`
+# Log directory for gitea. Default: '/var/log/gitea'
+#
 # Authors
 # -------
 #
@@ -37,6 +40,7 @@ class gitea::config (
   $group                  = $gitea::group,
   $installation_directory = $gitea::installation_directory,
   $repository_root        = $gitea::repository_root,
+  $log_directory          = $gitea::log_directory,
   ) {
 
   $default_sections = {
@@ -45,6 +49,9 @@ class gitea::config (
     },
     'repository' => {
       'ROOT' => $repository_root,
+    },
+    'log' => {
+      'ROOT_PATH' => $log_directory,
     },
   }
 

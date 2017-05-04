@@ -48,6 +48,9 @@
 # * `repository_root`
 # Directory where gitea will keep all git repositories. Default: '/var/git'
 #
+# * `log_directory`
+# Log directory for gitea. Default: '/var/log/gitea'
+#
 # * `configuration_sections`
 # INI style settings for configuring Gitea.
 #
@@ -100,6 +103,7 @@ class gitea (
   $checksum_type,
   $installation_directory,
   $repository_root,
+  $log_directory,
 
   $configuration_sections,
 

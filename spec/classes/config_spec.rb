@@ -14,7 +14,8 @@ describe 'gitea::config', type: :class do
             owner: 'git',
             group: 'git',
             installation_directory: '/opt/gitea',
-            repository_root: '/var/git'
+            repository_root: '/var/git',
+            log_directory: '/var/log/gitea'
           }
         end
 
@@ -31,6 +32,12 @@ describe 'gitea::config', type: :class do
             section: 'repository',
             setting: 'ROOT',
             value: '/var/git',
+            path: '/opt/gitea/custom/conf/app.ini'
+          )
+          is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [log] ROOT_PATH').with(
+            section: 'log',
+            setting: 'ROOT_PATH',
+            value: '/var/log/gitea',
             path: '/opt/gitea/custom/conf/app.ini'
           )
         end

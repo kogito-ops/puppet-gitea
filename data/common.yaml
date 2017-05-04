@@ -13,6 +13,7 @@ gitea::checksum: '59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d5
 gitea::checksum_type: 'sha256'
 gitea::installation_directory: '/opt/gitea'
 gitea::repository_root: '/var/git'
+gitea::log_directory: '/var/log/gitea'
 gitea::configuration_sections: {}
 gitea::manage_service: true
 gitea::service_template: 'gitea/systemd.erb'
