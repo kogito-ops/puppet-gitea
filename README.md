@@ -54,6 +54,7 @@ class { 'gitea':
     checksum_type => 'sha256',
     installation_directory => '/opt/gitea',
     repository_root => '/var/git',
+    log_directory => '/var/log/gitea',
     configuration_sections => {},
     manage_service => true,
     service_template => 'gitea/systemd.erb',
@@ -97,6 +98,7 @@ class { 'gitea::install':
     checksum_type => 'sha256',
     installation_directory => '/opt/gitea',
     repository_root => '/var/git',
+    log_directory => '/var/log/gitea',
     manage_service => true,
     service_template => 'gitea/systemd.erb',
     service_path => '/lib/systemd/system/gitea.service',
@@ -112,6 +114,7 @@ class { 'gitea::service':
     manage_service => true,
     service_provider => 'systemd',
     installation_directory => '/opt/gitea',
+    log_directory => '/var/log/gitea',
 }
 ```
 

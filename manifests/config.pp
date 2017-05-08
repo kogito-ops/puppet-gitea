@@ -43,7 +43,7 @@ class gitea::config (
   $log_directory          = $gitea::log_directory,
   ) {
 
-  $default_sections = {
+  $required_settings = {
     '' => {
       'RUN_USER' => $owner,
     },
@@ -60,7 +60,7 @@ class gitea::config (
     'require' => File["${installation_directory}/custom/conf"],
   }
 
-  $template_app_ini_sections = deep_merge($default_sections, $configuration_sections)
+  $template_app_ini_sections = deep_merge($required_settings, $configuration_sections)
 
   file { "${installation_directory}/custom":
     ensure => 'directory',
@@ -72,7 +72,14 @@ class gitea::config (
     ensure => 'directory',
     owner  => $owner,
     group  => $group,
+    notify => Exec["permissions:${installation_directory}/custom"],
   }
 
   create_ini_settings($template_app_ini_sections, $gitea_configuration)
+
+  exec { "permissions:${installation_directory}/custom":
+    command     => "chown -Rf ${owner}:${group} ${installation_directory}/custom",
+    path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
+    refreshonly => true,
+  }
 }

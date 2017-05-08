@@ -98,7 +98,7 @@ class gitea::install (
     group  => $group,
   }
 
-  -> file { "${log_directory}/":
+  -> file { $log_directory:
     ensure => 'directory',
     owner  => $owner,
     group  => $group,

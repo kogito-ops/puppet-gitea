@@ -30,7 +30,7 @@ describe 'gitea::install', type: :class do
         it { is_expected.to contain_remote_file('gitea') }
         it { is_expected.to contain_file('/opt/gitea') }
         it { is_expected.to contain_file('/opt/gitea/data') }
-        it { is_expected.to contain_file('/var/log/gitea/') }
+        it { is_expected.to contain_file('/var/log/gitea') }
         it { is_expected.to contain_file('/var/git') }
         it { is_expected.to contain_file('service:/lib/systemd/system/gitea.service') }
         it { is_expected.to contain_exec('permissions:/opt/gitea') }

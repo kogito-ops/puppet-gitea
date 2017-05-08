@@ -21,6 +21,7 @@ describe 'gitea::config', type: :class do
 
         it { is_expected.to contain_file('/opt/gitea/custom') }
         it { is_expected.to contain_file('/opt/gitea/custom/conf') }
+        it { is_expected.to contain_exec('permissions:/opt/gitea/custom') }
         it do
           is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [] RUN_USER').with(
             section: '',

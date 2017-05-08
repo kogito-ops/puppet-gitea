@@ -1,3 +1,10 @@
+## (NOT YET RELEASE) 1.0.3
+
+### Maintenance
+
+*   updated documentation
+*   clean up test suite
+
 ## (2017-05-04) 1.0.2
 
 ### New features
