@@ -10,6 +10,7 @@
 
 ### Maintenance
 
+*   use resource types for parameters
 *   updated documentation
 *   clean up test suite
 

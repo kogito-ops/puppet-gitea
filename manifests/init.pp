@@ -90,32 +90,32 @@
 # Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea (
-  $package_ensure,
-  $dependencies_ensure,
-  $dependencies,
+  Enum['present','absent'] $package_ensure,
+  Enum['latest','present','absent'] $dependencies_ensure,
+  Array[String] $dependencies,
 
-  $manage_user,
-  $manage_group,
-  $manage_home,
-  $owner,
-  $group,
-  $home,
+  Boolean $manage_user,
+  Boolean $manage_group,
+  Boolean $manage_home,
+  String $owner,
+  String $group,
+  Optional[String] $home,
 
-  $version,
-  $checksum,
-  $checksum_type,
-  $installation_directory,
-  $repository_root,
-  $log_directory,
-  $attachment_directory,
+  String $version,
+  String $checksum,
+  String $checksum_type,
+  String $installation_directory,
+  String $repository_root,
+  String $log_directory,
+  String $attachment_directory,
 
-  $configuration_sections,
+  Hash $configuration_sections,
 
-  $manage_service,
-  $service_template,
-  $service_path,
-  $service_provider,
-  $service_mode,
+  Boolean $manage_service,
+  String $service_template,
+  String $service_path,
+  String $service_provider,
+  String $service_mode,
   ) {
 
   class { '::gitea::packages': }

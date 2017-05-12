@@ -63,23 +63,23 @@
 # Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::install (
-  $package_ensure         = $gitea::package_ensure,
-  $owner                  = $gitea::owner,
-  $group                  = $gitea::group,
+  Enum['present','absent'] $package_ensure = $gitea::package_ensure,
+  String $owner                  = $gitea::owner,
+  String $group                  = $gitea::group,
 
-  $version                = $gitea::version,
-  $checksum               = $gitea::checksum,
-  $checksum_type          = $gitea::checksum_type,
-  $installation_directory = $gitea::installation_directory,
-  $repository_root        = $gitea::repository_root,
-  $log_directory          = $gitea::log_directory,
-  $attachment_directory   = $gitea::attachment_directory,
+  String $version                = $gitea::version,
+  String $checksum               = $gitea::checksum,
+  String $checksum_type          = $gitea::checksum_type,
+  String $installation_directory = $gitea::installation_directory,
+  String $repository_root        = $gitea::repository_root,
+  String $log_directory          = $gitea::log_directory,
+  String $attachment_directory   = $gitea::attachment_directory,
 
-  $manage_service         = $gitea::manage_service,
-  $service_template       = $gitea::service_template,
-  $service_path           = $gitea::service_path,
-  $service_provider       = $gitea::service_provider,
-  $service_mode           = $gitea::service_mode,
+  Boolean $manage_service        = $gitea::manage_service,
+  String $service_template       = $gitea::service_template,
+  String $service_path           = $gitea::service_path,
+  String $service_provider       = $gitea::service_provider,
+  String $service_mode           = $gitea::service_mode,
   ) {
 
   file { $repository_root:

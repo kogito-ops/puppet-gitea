@@ -38,13 +38,13 @@
 # Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::config (
-  $configuration_sections = $gitea::configuration_sections,
-  $owner                  = $gitea::owner,
-  $group                  = $gitea::group,
-  $installation_directory = $gitea::installation_directory,
-  $repository_root        = $gitea::repository_root,
-  $log_directory          = $gitea::log_directory,
-  $attachment_directory   = $gitea::attachment_directory,
+  Hash $configuration_sections   = $gitea::configuration_sections,
+  String $owner                  = $gitea::owner,
+  String $group                  = $gitea::group,
+  String $installation_directory = $gitea::installation_directory,
+  String $repository_root        = $gitea::repository_root,
+  String $log_directory          = $gitea::log_directory,
+  String $attachment_directory   = $gitea::attachment_directory,
   ) {
 
   $required_settings = {

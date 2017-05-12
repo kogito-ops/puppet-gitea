@@ -26,9 +26,9 @@
 # Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::service (
-  $manage_service         = $gitea::manage_service,
-  $service_provider       = $gitea::service_provider,
-  $installation_directory = $gitea::installation_directory,
+  Boolean $manage_service        = $gitea::manage_service,
+  String $service_provider       = $gitea::service_provider,
+  String $installation_directory = $gitea::installation_directory,
   ) {
 
   if ($manage_service) {

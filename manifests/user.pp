@@ -35,12 +35,12 @@
 # Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::user (
-  $manage_user  = $gitea::manage_user,
-  $manage_group = $gitea::manage_group,
-  $manage_home  = $gitea::manage_home,
-  $owner        = $gitea::owner,
-  $group        = $gitea::group,
-  $home         = $gitea::home,
+  Boolean $manage_user   = $gitea::manage_user,
+  Boolean $manage_group  = $gitea::manage_group,
+  Boolean $manage_home   = $gitea::manage_home,
+  String  $owner         = $gitea::owner,
+  String  $group         = $gitea::group,
+  Optional[String] $home = $gitea::home,
   ) {
 
   if ($manage_home) {
