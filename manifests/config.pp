@@ -24,6 +24,9 @@
 # * `log_directory`
 # Log directory for gitea. Default: '/var/log/gitea'
 #
+# * `attachment_directory`
+# Directory for storing attachments. Default: '/opt/gitea/data/attachments'
+#
 # Authors
 # -------
 #
@@ -41,6 +44,7 @@ class gitea::config (
   $installation_directory = $gitea::installation_directory,
   $repository_root        = $gitea::repository_root,
   $log_directory          = $gitea::log_directory,
+  $attachment_directory   = $gitea::attachment_directory,
   ) {
 
   $required_settings = {
@@ -53,6 +57,10 @@ class gitea::config (
     'log' => {
       'MODE' =>'file',
       'ROOT_PATH' => $log_directory,
+    },
+    'attachment' => {
+      'ENABLE' => true,
+      'PATH' => $attachment_directory,
     },
   }
 

@@ -41,6 +41,10 @@ describe 'gitea class' do
       it { is_expected.to be_directory }
     end
 
+    describe file('/opt/gitea/data/attachments') do
+      it { is_expected.to be_directory }
+    end
+
     describe file('/var/log/gitea') do
       it { is_expected.to be_directory }
     end

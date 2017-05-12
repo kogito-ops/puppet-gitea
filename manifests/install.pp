@@ -34,6 +34,9 @@
 # * `log_directory`
 # Log directory for gitea. Default: '/var/log/gitea'
 #
+# * `attachment_directory`
+# Directory for storing attachments. Default: '/opt/gitea/data/attachments'
+#
 # * `manage_service`
 # Should we manage a service definition for Gitea?
 #
@@ -70,6 +73,7 @@ class gitea::install (
   $installation_directory = $gitea::installation_directory,
   $repository_root        = $gitea::repository_root,
   $log_directory          = $gitea::log_directory,
+  $attachment_directory   = $gitea::attachment_directory,
 
   $manage_service         = $gitea::manage_service,
   $service_template       = $gitea::service_template,
@@ -96,6 +100,13 @@ class gitea::install (
     ensure => 'directory',
     owner  => $owner,
     group  => $group,
+  }
+
+  -> file { $attachment_directory:
+    ensure => 'directory',
+    owner  => $owner,
+    group  => $group,
+    notify => Exec["permissions:${attachment_directory}"],
   }
 
   -> file { $log_directory:
@@ -155,6 +166,12 @@ class gitea::install (
 
   exec { "permissions:${log_directory}":
     command     => "chown -Rf ${owner}:${group} ${log_directory}",
+    path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
+    refreshonly => true,
+  }
+
+  exec { "permissions:${attachment_directory}":
+    command     => "chown -Rf ${owner}:${group} ${attachment_directory}",
     path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     refreshonly => true,
   }

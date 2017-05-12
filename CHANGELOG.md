@@ -1,5 +1,9 @@
 ## (NOT YET RELEASE) 1.0.3
 
+### New features
+
+*   create and configure attachment directory
+
 ### Bug fixes
 
 *   configure file logging mode

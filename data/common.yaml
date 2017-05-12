@@ -14,6 +14,7 @@ gitea::checksum_type: 'sha256'
 gitea::installation_directory: '/opt/gitea'
 gitea::repository_root: '/var/git'
 gitea::log_directory: '/var/log/gitea'
+gitea::attachment_directory: '/opt/gitea/data/attachments'
 gitea::configuration_sections: {}
 gitea::manage_service: true
 gitea::service_template: 'gitea/systemd.erb'

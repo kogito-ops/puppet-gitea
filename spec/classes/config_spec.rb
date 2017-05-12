@@ -15,7 +15,8 @@ describe 'gitea::config', type: :class do
             group: 'git',
             installation_directory: '/opt/gitea',
             repository_root: '/var/git',
-            log_directory: '/var/log/gitea'
+            log_directory: '/var/log/gitea',
+            attachment_directory: '/opt/gitea/data/attachments'
           }
         end
 
@@ -45,6 +46,18 @@ describe 'gitea::config', type: :class do
             section: 'log',
             setting: 'MODE',
             value: 'file',
+            path: '/opt/gitea/custom/conf/app.ini'
+          )
+          is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [attachment] ENABLE').with(
+            section: 'attachment',
+            setting: 'ENABLE',
+            value: 'true',
+            path: '/opt/gitea/custom/conf/app.ini'
+          )
+          is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [attachment] PATH').with(
+            section: 'attachment',
+            setting: 'PATH',
+            value: '/opt/gitea/data/attachments',
             path: '/opt/gitea/custom/conf/app.ini'
           )
         end

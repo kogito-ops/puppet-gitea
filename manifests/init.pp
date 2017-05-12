@@ -51,6 +51,9 @@
 # * `log_directory`
 # Log directory for gitea. Default: '/var/log/gitea'
 #
+# * `attachment_directory`
+# Directory for storing attachments. Default: '/opt/gitea/data/attachments'
+#
 # * `configuration_sections`
 # INI style settings for configuring Gitea.
 #
@@ -104,6 +107,7 @@ class gitea (
   $installation_directory,
   $repository_root,
   $log_directory,
+  $attachment_directory,
 
   $configuration_sections,
 
