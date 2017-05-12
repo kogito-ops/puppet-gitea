@@ -1,5 +1,9 @@
 ## (NOT YET RELEASE) 1.0.3
 
+### Bug fixes
+
+*   configure file logging mode
+
 ### Maintenance
 
 *   updated documentation

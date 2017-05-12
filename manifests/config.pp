@@ -51,6 +51,7 @@ class gitea::config (
       'ROOT' => $repository_root,
     },
     'log' => {
+      'MODE' =>'file',
       'ROOT_PATH' => $log_directory,
     },
   }

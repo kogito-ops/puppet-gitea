@@ -41,6 +41,12 @@ describe 'gitea::config', type: :class do
             value: '/var/log/gitea',
             path: '/opt/gitea/custom/conf/app.ini'
           )
+          is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [log] MODE').with(
+            section: 'log',
+            setting: 'MODE',
+            value: 'file',
+            path: '/opt/gitea/custom/conf/app.ini'
+          )
         end
       end
     end
