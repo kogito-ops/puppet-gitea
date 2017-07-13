@@ -55,6 +55,7 @@ class { 'gitea':
     installation_directory => '/opt/gitea',
     repository_root => '/var/git',
     log_directory => '/var/log/gitea',
+    attachment_directory => '/opt/gitea/data/attachments',
     configuration_sections => {},
     manage_service => true,
     service_template => 'gitea/systemd.erb',
@@ -99,6 +100,7 @@ class { 'gitea::install':
     installation_directory => '/opt/gitea',
     repository_root => '/var/git',
     log_directory => '/var/log/gitea',
+    attachment_directory => '/opt/gitea/data/attachments',
     manage_service => true,
     service_template => 'gitea/systemd.erb',
     service_path => '/lib/systemd/system/gitea.service',
@@ -127,6 +129,7 @@ class { 'gitea::config':
     group => 'git',
     installation_directory => '/opt/gitea',
     repository_root => '/var/git',
+    attachment_directory => '/opt/gitea/data/attachments',
 }
 ```
 
