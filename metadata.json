@@ -1,6 +1,6 @@
 {
   "name": "kogitoapp-gitea",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "kogitoapp",
   "summary": "Manage Gitea with Puppet",
   "license": "Apache-2.0",
