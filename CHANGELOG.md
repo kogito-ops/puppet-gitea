@@ -6,6 +6,7 @@
 
 ### Maintenance
 
+*   Allow Puppet 5 usage
 *   Added Debian Stretch support
 
 ## (2017-07-13) 1.0.3
