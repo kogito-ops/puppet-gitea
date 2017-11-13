@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 
 describe 'gitea class' do
-  context 'default parameters' do
+  context 'with default parameters' do
     # Using puppet_apply as a helper
     it 'works idempotently with no errors' do
       pp = <<-PUPPET
