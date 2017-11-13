@@ -8,7 +8,7 @@ include RspecPuppetFacts
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
   SimpleCov::Formatter::Console,
-  Coveralls::SimpleCov::Formatter
+  Coveralls::SimpleCov::Formatter,
 ]
 SimpleCov.start do
   track_files 'lib/**/*.rb'
@@ -20,7 +20,7 @@ end
 RSpec.configure do |c|
   default_facts = {
     puppetversion: Puppet.version,
-    facterversion: Facter.version
+    facterversion: Facter.version,
   }
   default_facts.merge!(YAML.safe_load(File.read(File.expand_path('../default_facts.yml', __FILE__)))) if File.exist?(File.expand_path('../default_facts.yml', __FILE__))
   default_facts.merge!(YAML.safe_load(File.read(File.expand_path('../default_module_facts.yml', __FILE__)))) if File.exist?(File.expand_path('../default_module_facts.yml', __FILE__))

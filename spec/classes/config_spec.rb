@@ -16,7 +16,7 @@ describe 'gitea::config', type: :class do
             installation_directory: '/opt/gitea',
             repository_root: '/var/git',
             log_directory: '/var/log/gitea',
-            attachment_directory: '/opt/gitea/data/attachments'
+            attachment_directory: '/opt/gitea/data/attachments',
           }
         end
 
@@ -28,37 +28,37 @@ describe 'gitea::config', type: :class do
             section: '',
             setting: 'RUN_USER',
             value: 'git',
-            path: '/opt/gitea/custom/conf/app.ini'
+            path: '/opt/gitea/custom/conf/app.ini',
           )
           is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [repository] ROOT').with(
             section: 'repository',
             setting: 'ROOT',
             value: '/var/git',
-            path: '/opt/gitea/custom/conf/app.ini'
+            path: '/opt/gitea/custom/conf/app.ini',
           )
           is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [log] ROOT_PATH').with(
             section: 'log',
             setting: 'ROOT_PATH',
             value: '/var/log/gitea',
-            path: '/opt/gitea/custom/conf/app.ini'
+            path: '/opt/gitea/custom/conf/app.ini',
           )
           is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [log] MODE').with(
             section: 'log',
             setting: 'MODE',
             value: 'file',
-            path: '/opt/gitea/custom/conf/app.ini'
+            path: '/opt/gitea/custom/conf/app.ini',
           )
           is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [attachment] ENABLE').with(
             section: 'attachment',
             setting: 'ENABLE',
             value: 'true',
-            path: '/opt/gitea/custom/conf/app.ini'
+            path: '/opt/gitea/custom/conf/app.ini',
           )
           is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [attachment] PATH').with(
             section: 'attachment',
             setting: 'PATH',
             value: '/opt/gitea/data/attachments',
-            path: '/opt/gitea/custom/conf/app.ini'
+            path: '/opt/gitea/custom/conf/app.ini',
           )
         end
       end

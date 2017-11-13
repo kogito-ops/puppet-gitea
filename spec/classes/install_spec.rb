@@ -24,7 +24,7 @@ describe 'gitea::install', type: :class do
             service_template: 'gitea/systemd.erb',
             service_path: '/lib/systemd/system/gitea.service',
             service_provider: 'systemd',
-            service_mode: '0644'
+            service_mode: '0644',
           }
         end
 

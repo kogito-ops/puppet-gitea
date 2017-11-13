@@ -12,7 +12,7 @@ describe 'gitea::packages', type: :class do
           let :params do
             {
               dependencies: %w[curl git-core tar],
-              dependencies_ensure: 'present'
+              dependencies_ensure: 'present',
             }
           end
 
@@ -27,7 +27,7 @@ describe 'gitea::packages', type: :class do
           let :params do
             {
               dependencies: %w[curl git initscripts tar],
-              dependencies_ensure: 'present'
+              dependencies_ensure: 'present',
             }
           end
 

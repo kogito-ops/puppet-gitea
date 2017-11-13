@@ -4,9 +4,9 @@ describe 'gitea class' do
   context 'default parameters' do
     # Using puppet_apply as a helper
     it 'works idempotently with no errors' do
-      pp = <<-EOS
+      pp = <<-PUPPET
       class { 'gitea': }
-      EOS
+      PUPPET
 
       # Run it twice and test for idempotency
       apply_manifest(pp, catch_failures: true)

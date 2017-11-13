@@ -15,7 +15,7 @@ describe 'gitea::user', type: :class do
             manage_home: true,
             owner: 'git',
             group: 'git',
-            home: '/home/git'
+            home: '/home/git',
           }
         end
 

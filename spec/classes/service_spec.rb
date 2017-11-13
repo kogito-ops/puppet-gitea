@@ -12,7 +12,7 @@ describe 'gitea::service', type: :class do
           {
             manage_service: true,
             service_provider: 'systemd',
-            installation_directory: '/opt/gitea'
+            installation_directory: '/opt/gitea',
           }
         end
 
