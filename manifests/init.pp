@@ -33,6 +33,9 @@
 # * `home`
 # Qualified path to the users' home directory. Default: empty
 #
+# * `base_url`
+# Download base URL. Default: Github. Can be used for local mirrors.
+#
 # * `version`
 # Version of gitea to install. Default: '1.1.0'
 #
@@ -101,6 +104,7 @@ class gitea (
   String $group,
   Optional[String] $home,
 
+  String $base_url,
   String $version,
   String $checksum,
   String $checksum_type,

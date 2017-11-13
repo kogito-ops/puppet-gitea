@@ -15,6 +15,9 @@
 # * `group`
 # The group owning gitea and its' files. Default: 'git'
 #
+# * `base_url`
+# Download base URL. Default: Github. Can be used for local mirrors.
+#
 # * `version`
 # Version of gitea to install. Default: '1.1.0'
 #
@@ -67,6 +70,7 @@ class gitea::install (
   String $owner                  = $gitea::owner,
   String $group                  = $gitea::group,
 
+  String $base_url               = $gitea::base_url,
   String $version                = $gitea::version,
   String $checksum               = $gitea::checksum,
   String $checksum_type          = $gitea::checksum_type,
@@ -131,7 +135,7 @@ class gitea::install (
       }
     }
 
-    $source_url="https://github.com/go-gitea/gitea/releases/download/v${version}/gitea-${version}-${kernel_down}-${arch}"
+    $source_url="${base_url}/v${version}/gitea-${version}-${kernel_down}-${arch}"
 
     remote_file { 'gitea':
       ensure        => $package_ensure,

@@ -9,6 +9,7 @@ a DevOps / Infrastructure services business in Berlin, Germany.
 
 **Features**
 
+- Base URL for Gitea downloads can now be pointed to a custom location
 - Converted module to be Puppet Development Kit compatible
 - Added support for Debian 9 (Stretch)
 - Updated Puppet requirements to be in line with PE lifecycle
