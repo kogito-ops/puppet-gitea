@@ -1,55 +1,46 @@
-## (NOT YET RELEASED) 1.0.4
+# Changelog
 
-### Bug fixes
+All notable changes to this project will be documented in this file.
 
-*   set a fixed version for Rubocop gem
+## Release 1.0.4 (NOT YET RELEASED)
 
-### Maintenance
+With this release, ownership of this module is transfered to Kogito UG,
+a DevOps / Infrastructure services business in Berlin, Germany.
 
-*   Allow Puppet 5 usage
-*   Added Debian Stretch support
+**Features**
 
-## (2017-07-13) 1.0.3
+- Converted module to be Puppet Development Kit compatible
+- Added support for Debian 9 (Stretch)
+- Updated Puppet requirements to be in line with PE lifecycle
 
-### New features
+## Release 1.0.3 (2017-07-13)
 
-*   create and configure attachment directory
+**Features**
 
-### Bug fixes
+- Added `gitea::attachment_directory` to allow customized issue attachment paths
+- Switched to using proper resource types in all places
+- Updated module documentation
 
-*   configure file logging mode
+**Bugfixes**
 
-### Maintenance
+- Added missing file logging mode
 
-*   use resource types for parameters
-*   updated documentation
-*   clean up test suite
+## Release 1.0.2 (2017-05-04)
 
-## (2017-05-04) 1.0.2
+**Features**
 
-### New features
+- Added `gitea::log_directory` to allow customized log paths
 
-*   `gitea::log_directory` added to allow for custom log path
+## Release 1.0.1 (2017-05-02)
 
-## (2017-05-02) 1.0.1
+**Bugfixes**
 
-### Maintenance
+- Updated Travis CI build settings enabling automated module builds
 
-*   Updated Travis build settings
+## Release 1.0.0 (2017-05-02)
 
-## (2017-05-02) Release 1.0.0
+Initial release of Gitea management module. Hello, World!
 
-Initial release of Gitea management module! Hurra!
+**Known Issues**
 
-### New features
-
-*   support package and configuration of Gitea on Debian, Ubuntu, CentOS,
-    RHEL.
-
-### Bug fixes
-
-*   ... nothing yet!
-
-### Maintenance
-
-*   ... adding in Travis CI build settings and Puppet Forge deployment.
+- Travis CI build not (yet) working.

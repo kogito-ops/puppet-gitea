@@ -16,14 +16,14 @@ with default settings, or customize all settings to your liking.
 
 ### What Gitea affects
 
-*   `puppet-gitea` depends on
-    *   [puppetlabs-stdlib][puppetlabs-stdlib],
-    *   [puppetlabs-inifile][puppetlabs-inifile],
-    *   [lwf-remote_file][lwf-remote_file],
-*   it install dependencies for gitea: `curl`, `git` and `tar`
-*   it manages a user and group `git`
-*   it manages the gitea directory (`/opt/gitea`) and the repositories (`/var/git`)
-*   it install a `gitea` service listening on port `3000`
+- `puppet-gitea` depends on
+  - [puppetlabs-stdlib][puppetlabs-stdlib],
+  - [puppetlabs-inifile][puppetlabs-inifile],
+  - [lwf-remote_file][lwf-remote_file],
+- it install dependencies for gitea: `curl`, `git` and `tar`
+- it manages a user and group `git`
+- it manages the gitea directory (`/opt/gitea`) and the repositories (`/var/git`)
+- it install a `gitea` service listening on port `3000`
 
 ### Beginning with Gitea
 
@@ -135,7 +135,7 @@ class { 'gitea::config':
 
 ## Limitations
 
-See [metadata.json](metadata.json) for supported platforms
+See [metadata.json](metadata.json) for supported platforms.
 
 ## Development
 
@@ -146,9 +146,9 @@ This project contains tests for [rspec-puppet][puppet-rspec].
 Quickstart:
 
 ```bash
-$ gem install bundler
-$ bundle install
-$ bundle exec rake test
+gem install bundler
+bundle install
+bundle exec rake test
 ```
 
 When submitting pull requests, please make sure that module documentation,

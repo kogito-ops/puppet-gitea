@@ -1,7 +1,7 @@
 {
   "name": "kogitoapp-gitea",
   "version": "1.0.3",
-  "author": "kogitoapp",
+  "author": "Kogito UG <brainz+puppet@kogitoapp.com>",
   "summary": "A module to manage Gitea to enjoy self-hosted Git",
   "license": "Apache-2.0",
   "source": "https://github.com/kogitoapp/puppet-gitea.git",
