@@ -1,21 +1,6 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-facts'
-require 'coveralls'
-require 'simplecov'
-require 'simplecov-console'
 include RspecPuppetFacts
-
-SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::Console,
-  Coveralls::SimpleCov::Formatter,
-]
-SimpleCov.start do
-  track_files 'lib/**/*.rb'
-  add_filter '/spec'
-  add_filter '/vendor'
-  add_filter '/.vendor'
-end
 
 RSpec.configure do |c|
   default_facts = {

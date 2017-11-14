@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.5 (NOT YET RELEASED)
+
+**Bugfixes**
+
+- Removed coveralls integration.
+
 ## Release 1.0.4 (2017-11-13)
 
 With this release, ownership of this module is transfered to Kogito UG,
