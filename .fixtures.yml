@@ -9,8 +9,8 @@ fixtures:
     inifile:
       repo: 'https://github.com/puppetlabs/puppetlabs-inifile.git'
       ref: '1.6.0'
-    remotefile:
-      repo: 'https://github.com/lwf/puppet-remote_file.git'
-      ref: 'v1.1.3'
+    archive:
+      repo: 'https://github.com/voxpupuli/puppet-archive.git'
+      ref: '2.1.0'
   symlinks:
     gitea: "#{source_dir}"

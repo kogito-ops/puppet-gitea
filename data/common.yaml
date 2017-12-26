@@ -2,22 +2,29 @@
 gitea::package_ensure: 'present'
 gitea::dependencies_ensure: 'present'
 gitea::dependencies: []
-gitea::manage_user: true
+
+gitea::manage_package: true
+gitea::manage_dependencies: true
 gitea::manage_group: true
+gitea::manage_user: true
 gitea::manage_home: true
+gitea::manage_service: true
+
 gitea::owner: 'git'
 gitea::group: 'git'
 gitea::home: ~
+
 gitea::base_url: 'https://github.com/go-gitea/gitea/releases/download'
 gitea::version: '1.2.3'
 gitea::checksum: 'bc71b6005617700c9b5654ddf5649aa9ee28dc2344d84254ddeb2678f4d44809'
 gitea::checksum_type: 'sha256'
+
 gitea::installation_directory: '/opt/gitea'
 gitea::repository_root: '/var/git'
 gitea::log_directory: '/var/log/gitea'
 gitea::attachment_directory: '/opt/gitea/data/attachments'
 gitea::configuration_sections: {}
-gitea::manage_service: true
+
 gitea::service_template: 'gitea/systemd.erb'
 gitea::service_path: '/lib/systemd/system/gitea.service'
 gitea::service_provider: 'systemd'

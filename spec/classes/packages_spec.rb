@@ -1,42 +1,11 @@
 require 'spec_helper'
 
-describe 'gitea::packages', type: :class do
-  on_supported_os.each do |os, facts|
-    context "on #{os} " do
-      let :facts do
-        facts
-      end
+describe 'gitea::packages' do
+  on_supported_os(facterversion: '2.4').each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
 
-      context 'with :osfamily => "Debian"' do
-        if facts[:osfamily] == 'Debian'
-          let :params do
-            {
-              dependencies: %w[curl git-core tar],
-              dependencies_ensure: 'present',
-            }
-          end
-
-          it { is_expected.to contain_package('curl') }
-          it { is_expected.to contain_package('git-core') }
-          it { is_expected.to contain_package('tar') }
-        end
-      end
-
-      context 'with :osfamily => "RedHat"' do
-        if facts[:osfamily] == 'RedHat'
-          let :params do
-            {
-              dependencies: %w[curl git initscripts tar],
-              dependencies_ensure: 'present',
-            }
-          end
-
-          it { is_expected.to contain_package('curl') }
-          it { is_expected.to contain_package('git') }
-          it { is_expected.to contain_package('initscripts') }
-          it { is_expected.to contain_package('tar') }
-        end
-      end
+      it { is_expected.to compile }
     end
   end
 end

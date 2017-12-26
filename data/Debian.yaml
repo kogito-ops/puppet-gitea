@@ -1,5 +1,4 @@
 ---
 gitea::dependencies:
-  - 'curl'
   - 'git-core'
   - 'tar'

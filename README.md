@@ -5,160 +5,92 @@
 [![Puppet Forge - downloads][forge-shield-dl]][forge-gitea]
 [![Puppet Forge - scores][forge-shield-sc]][forge-gitea]
 
+Welcome to the Puppet module for [Gitea][gitea], self-hosted Git is here!
+
+## Table of Contents
+
+1. [Description](#description)
+2. [Setup - The basics of getting started with gitea](#setup)
+    * [What gitea affects](#what-gitea-affects)
+    * [Setup requirements](#setup-requirements)
+    * [Beginning with gitea](#beginning-with-gitea)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
+
 ## Description
 
-A Puppet module for managing [Gitea][gitea] (Git with a cup of tea) settings.
-This module allows you to install and configure Gitea using pre-built binaries
-and does not need external package repositories. You can chose to install Gitea
-with default settings, or customize all settings to your liking.
+With this module you can install any Gitea release version using Puppet either
+standalone, or behind a proxy of your choice. Configuration is Hiera compatible
+and allows for easy upgrades of Gitea.
+
+In addition to installing Gitea, it also takes care for having an unprivileged
+user, all dependencies and a service definition to keep Gitea running. All of
+these features are _optional_ and enabled by default. You can ditch them if you
+have other modules handling these things.
 
 ## Setup
 
-### What Gitea affects
+### What gitea affects
 
-- `puppet-gitea` depends on
-  - [puppetlabs-stdlib][puppetlabs-stdlib],
-  - [puppetlabs-inifile][puppetlabs-inifile],
-  - [lwf-remote_file][lwf-remote_file],
-- it install dependencies for gitea: `curl`, `git` and `tar`
-- it manages a user and group `git`
-- it manages the gitea directory (`/opt/gitea`) and the repositories (`/var/git`)
-- it install a `gitea` service listening on port `3000`
+If it's obvious what your module touches, you can skip this section. For example,
+folks can probably figure out that your mysql_instance module affects their MySQL
+instances.
 
-### Beginning with Gitea
+If there's more that they should know about, though, this is the place to mention:
 
-The simplest use case is to rely on defaults. This can be done by simply
-including the class:
+* Files, packages, services, or operations that the module will alter, impact,
+  or execute.
+* Dependencies that your module automatically installs.
+* Warnings or other important notices.
 
-```puppet
-include ::gitea
-```
+### Setup Requirements
+
+`puppet-gitea` does not ask for much, it will be happy if you use a supported
+Puppet agent/server.
+
+### Beginning with gitea
+
+The very basic steps needed for a user to get the module up and running. This
+can include setup steps, if necessary, or it can be an example of the most basic
+use of the module.
+
+## Usage
+
+This section is where you describe how to customize, configure, and do the fancy
+stuff with your module here. It's especially helpful if you include usage examples
+and code samples for doing things with your module.
 
 ## Reference
 
-### Class: `gitea`
+Users need a complete list of your module's classes, types, defined types
+providers, facts, and functions, along with the parameters for each. You can
+provide this list either via Puppet Strings code comments or as a complete list
+in the README Reference section.
 
-```puppet
-class { 'gitea':
-    package_ensure => 'present',
-    dependencies_ensure => 'present',
-    dependencies => ['curl', 'git', 'tar'],
-    manage_user => true,
-    manage_group => true,
-    manage_home => true,
-    owner => 'git',
-    group => 'git',
-    home => '/home/git',
-    version => '1.1.0',
-    checksum => '59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d556',
-    checksum_type => 'sha256',
-    installation_directory => '/opt/gitea',
-    repository_root => '/var/git',
-    log_directory => '/var/log/gitea',
-    attachment_directory => '/opt/gitea/data/attachments',
-    configuration_sections => {},
-    manage_service => true,
-    service_template => 'gitea/systemd.erb',
-    service_path => '/lib/systemd/system/gitea.service',
-    service_provider => 'systemd',
-    service_mode => '0644',
-}
-```
+* If you are using Puppet Strings code comments, this Reference section should
+  include Strings information so that your users know how to access your
+  documentation.
 
-### Class: `gitea::packages`
+* If you are not using Puppet Strings, include a list of all of your classes,
+  defined types, and so on, along with their parameters. Each element in this
+  listing should include:
 
-```puppet
-class { 'gitea::packages':
-    dependencies_ensure => 'present',
-    dependencies => ['curl', 'git', 'tar'],
-}
-```
-
-### Class: `gitea::user`
-
-```puppet
-class { 'gitea::user':
-    manage_user => true,
-    manage_group => true,
-    manage_home => true,
-    owner => 'git',
-    group => 'git',
-    home => '/home/git',
-}
-```
-
-### Class: `gitea::install`
-
-```puppet
-class { 'gitea::install':
-    package_ensure => 'present',
-    owner => 'git',
-    group => 'git',
-    version => '1.1.0',
-    checksum => '59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d556',
-    checksum_type => 'sha256',
-    installation_directory => '/opt/gitea',
-    repository_root => '/var/git',
-    log_directory => '/var/log/gitea',
-    attachment_directory => '/opt/gitea/data/attachments',
-    manage_service => true,
-    service_template => 'gitea/systemd.erb',
-    service_path => '/lib/systemd/system/gitea.service',
-    service_provider => 'systemd',
-    service_mode => '0644',
-}
-```
-
-### Class: `gitea::service`
-
-```puppet
-class { 'gitea::service':
-    manage_service => true,
-    service_provider => 'systemd',
-    installation_directory => '/opt/gitea',
-    log_directory => '/var/log/gitea',
-}
-```
-
-### Class: `gitea::config`
-
-```puppet
-class { 'gitea::config':
-    configuration_sections => {},
-    owner => 'git',
-    group => 'git',
-    installation_directory => '/opt/gitea',
-    repository_root => '/var/git',
-    attachment_directory => '/opt/gitea/data/attachments',
-}
-```
+  * The data type, if applicable.
+  * A description of what the element does.
+  * Valid values, if the data type doesn't make it obvious.
+  * Default value, if any.
 
 ## Limitations
 
-See [metadata.json](metadata.json) for supported platforms.
+This is where you list OS compatibility, version compatibility, etc. If there
+are Known Issues, you might want to include them under their own heading here.
 
 ## Development
 
-### Running tests
-
-This project contains tests for [rspec-puppet][puppet-rspec].
-
-Quickstart:
-
-```bash
-gem install bundler
-bundle install
-bundle exec rake test
-```
-
-When submitting pull requests, please make sure that module documentation,
-test cases and syntax checks pass.
-
-[gitea]: https://github.com/go-gitea/gitea
-[puppetlabs-stdlib]: https://github.com/puppetlabs/puppetlabs-stdlib
-[puppetlabs-inifile]: https://github.com/puppetlabs/puppetlabs-inifile
-[lwf-remote_file]: https://github.com/lwf/puppet-remote_file
-[puppet-rspec]: http://rspec-puppet.com/
+Since your module is awesome, other users will want to play with it. Let them
+know what the ground rules for contributing are.
 
 [build-status]: https://travis-ci.org/kogitoapp/puppet-gitea
 [build-shield]: https://travis-ci.org/kogitoapp/puppet-gitea.png?branch=master
@@ -166,3 +98,5 @@ test cases and syntax checks pass.
 [forge-shield]: https://img.shields.io/puppetforge/v/kogitoapp/gitea.svg
 [forge-shield-dl]: https://img.shields.io/puppetforge/dt/kogitoapp/gitea.svg
 [forge-shield-sc]: https://img.shields.io/puppetforge/f/kogitoapp/gitea.svg
+
+[gitea]: https://gitea.io/

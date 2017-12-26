@@ -3,44 +3,26 @@ dist: trusty
 language: ruby
 cache: bundler
 before_install:
-  - bundle -v
-  - rm Gemfile.lock || true
-  - gem update --system
-  - gem update bundler
-  - gem --version
-  - bundle -v
+- bundle -v
+- rm Gemfile.lock || true
+- gem update --system
+- gem update bundler
+- gem --version
+- bundle -v
 script:
-  - bundle exec rake $CHECK
+- bundle exec rake $CHECK
+bundler_args: "--without system_tests"
+rvm:
+- 2.4.1
+- 2.1.9
+env:
+- PUPPET_GEM_VERSION="~> 4.0" CHECK=spec
 matrix:
   fast_finish: true
   include:
-  - rvm: 2.3.4
-    bundler_args: --without system_tests development
-    env: CHECK=test
-  - rvm: 2.4.1
-    bundler_args: --without system_tests development
-    env: CHECK=test
-  - rvm: 2.4.1
-    bundler_args: --without system_tests development
-    env: CHECK=build DEPLOY_TO_FORGE=yes
-  - rvm: 2.4.1
-    bundler_args: --without development
-    dist: trusty
-    env: PUPPET_INSTALL_TYPE=agent CHECK=beaker BEAKER_set=docker/centos-7
-    services: docker
-    sudo: required
-  - rvm: 2.4.1
-    bundler_args: --without development
-    dist: trusty
-    env: PUPPET_INSTALL_TYPE=agent CHECK=beaker BEAKER_set=docker/debian-8
-    services: docker
-    sudo: required
-  - rvm: 2.4.1
-    bundler_args: --without development
-    dist: trusty
-    env: PUPPET_INSTALL_TYPE=agent CHECK=beaker BEAKER_set=docker/ubuntu-16.04
-    services: docker
-    sudo: required
+  - env: CHECK=rubocop
+  - env: CHECK="syntax lint"
+  - env: CHECK=metadata_lint
 branches:
   only:
   - master
@@ -50,9 +32,9 @@ notifications:
 deploy:
   provider: puppetforge
   user: kogitoapp
+  password:
+    secure: bvQRur5HiKWqdE9KGdhGBCpl8h0UJd+6MjL/XKwT0gb3vSFKVyyRfVWg33noJXWhxb3paoNsIrB16ETYGA5DuFypnVM1pmAcYWGXqaMFN0U4aZINTGT5gjrxLUapJaIinfWbzOPvXGYBIII/uG5buFMA5PPnEAFXyuZVLiq05EFVOe7Qlb0GaTucAS3hvNWXaO4Kw+wx2RN4bDbgrV8C9ukOSQydsuS/IGIKmsWBTDrLUUadkESoiKF7zh45mRg1Qcw586Og/ju6rVFzEDzgTOfkAAqIqeJih3JQanwdt8sp/9DO5xvo4BkUkFZxTA5Q1k2NYpI32Tcf7h+DPVk3meHsnAcjePjdf1ct+E1JjLdknmmv6POzTvU2ANaQuvsZyQRk2r5+4V++sxAJK7XWgyrl/qzh2nkXNbIgcXbFFqRaT4xhgxLbFnQVRxlXZPx9zGp9okLLUoYcDOlqLqK7cqmNNytBhHWf3aJlL16ZL0H1MWFqDjQJx6IrcLlDRV79RFFpbx9OD5BlTrruaz08mwqYDf7VhSYBMQU+AdJVZiQeXa72WjqT9/57DSTuBDPTj8g30OFVui/LqqKtCWPsUFjYW0eq9yvaeYSPS75fccnnXjAuT4K4tQ/1pK5UV6RGofe8w17e5+Z0OubzoHYzACVRTBhUnM9gGZgPu2MQUqc=
   on:
     tags: true
     all_branches: true
     condition: "$DEPLOY_TO_FORGE = yes"
-  password:
-    secure: LvUtpxwE+fapCGQxkmk1idvp9s36N7nWnAK3tDYgLD0PEPSA5fXRAyUMbQQIxgWTnujqxjOtR3rLaXpNLZfeY13V+sFXpMUT2YS3ucRLxKRhzKnwbUqRCeCTXgxVF0uCffb2dP1Ua2rU7+0GRbdzz3vpeFnmM3IA3tFw4qlEENcba0ok1MQ51NW34mUqYBWif2zfKBQO62ywKd4E8JS73E5SbvaC0gLohFPCy+H7SkA6awMvbtdNZAswE6GHmfOHvTi9RMZPi5PyV+RW4B7pIYyNHCFsAbWstBMH/AqCjpHDw1NMWInyMqogLg86usI72gbfCumXH+DZfLpC9oGuke2F6dhDoAPFdOIPvybHnm2KyTZ55DJ/c6/3e4gkLwTYpJImNZW97HJlKMbZRPWSD7W+wt+idKV+PqTLy5Hf7Ul/hpOADfW6h57lifpawb2X6eytZUdU32YMuz2CdUNaIeCqUKXyc9Q2bHKQVAWmJZTzMl454rkteFsVvyZG1bvJBW7yDdNP2DNsXi/kVUXn4rYZ8bKZtfEWdA4x6psZxpswd3kPtV1gpLerFcY1SHVDK4iEZZE8AbYa+1+0g6x5Di2P1zmuXXuzyMMdRXlPHX+YHHmXkFAaLCbDM76jOvag2D70at2fV1ENKJ4D24bcDMSoTlDxsDQtRm3WP11FH/A=

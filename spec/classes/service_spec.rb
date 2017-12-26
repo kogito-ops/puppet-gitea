@@ -1,23 +1,11 @@
 require 'spec_helper'
 
-describe 'gitea::service', type: :class do
-  on_supported_os.each do |os, facts|
-    context "on #{os} " do
-      let :facts do
-        facts
-      end
+describe 'gitea::service' do
+  on_supported_os(facterversion: '2.4').each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
 
-      context 'with all defaults' do
-        let :params do
-          {
-            manage_service: true,
-            service_provider: 'systemd',
-            installation_directory: '/opt/gitea',
-          }
-        end
-
-        it { is_expected.to contain_service('gitea') }
-      end
+      it { is_expected.to compile }
     end
   end
 end
