@@ -15,6 +15,8 @@
 # * `group`
 # The group owning gitea and its' files. Default: 'git'
 #
+# * `proxy`
+# Download via specified proxy. Default: empty
 # * `base_url`
 # Download base URL. Default: Github. Can be used for local mirrors.
 #
@@ -70,6 +72,7 @@ class gitea::install (
   String $owner                  = $gitea::owner,
   String $group                  = $gitea::group,
 
+  Optional[String] $proxy        = $gitea::proxy,
   String $base_url               = $gitea::base_url,
   String $version                = $gitea::version,
   String $checksum               = $gitea::checksum,
@@ -141,6 +144,7 @@ class gitea::install (
       ensure        => $package_ensure,
       path          => "${installation_directory}/gitea",
       source        => $source_url,
+      proxy         => $proxy,
       checksum      => $checksum,
       checksum_type => $checksum_type,
       notify        => [
