@@ -17,6 +17,8 @@ describe 'gitea::config', type: :class do
             repository_root: '/var/git',
             log_directory: '/var/log/gitea',
             attachment_directory: '/opt/gitea/data/attachments',
+            lfs_enabled: false,
+            lfs_content_directory: '/opt/gitea/data/lfs',
           }
         end
 
@@ -58,6 +60,18 @@ describe 'gitea::config', type: :class do
             section: 'attachment',
             setting: 'PATH',
             value: '/opt/gitea/data/attachments',
+            path: '/opt/gitea/custom/conf/app.ini',
+          )
+          is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [server] LFS_CONTENT_PATH').with(
+            section: 'server',
+            setting: 'LFS_CONTENT_PATH',
+            value: '/opt/gitea/data/lfs',
+            path: '/opt/gitea/custom/conf/app.ini',
+          )
+          is_expected.to contain_ini_setting('/opt/gitea/custom/conf/app.ini [server] LFS_START_SERVER').with(
+            section: 'server',
+            setting: 'LFS_START_SERVER',
+            value: 'false',
             path: '/opt/gitea/custom/conf/app.ini',
           )
         end

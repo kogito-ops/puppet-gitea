@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Release 1.0.5 (NOT YET RELEASED)
 
+**Features**
+
+- Added `gitea::lfs_content_directory` to allow customized LFS file paths
+
 **Bugfixes**
 
 - Removed coveralls integration.

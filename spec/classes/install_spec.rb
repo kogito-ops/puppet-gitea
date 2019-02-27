@@ -21,6 +21,8 @@ describe 'gitea::install', type: :class do
             repository_root: '/var/git',
             log_directory: '/var/log/gitea',
             attachment_directory: '/opt/gitea/data/attachments',
+            lfs_enabled: false,
+            lfs_content_directory: '/opt/gitea/data/lfs',
             manage_service: true,
             service_template: 'gitea/systemd.erb',
             service_path: '/lib/systemd/system/gitea.service',
@@ -33,12 +35,14 @@ describe 'gitea::install', type: :class do
         it { is_expected.to contain_file('/opt/gitea') }
         it { is_expected.to contain_file('/opt/gitea/data') }
         it { is_expected.to contain_file('/opt/gitea/data/attachments') }
+        it { is_expected.to contain_file('/opt/gitea/data/lfs') }
         it { is_expected.to contain_file('/var/log/gitea') }
         it { is_expected.to contain_file('/var/git') }
         it { is_expected.to contain_file('service:/lib/systemd/system/gitea.service') }
         it { is_expected.to contain_exec('permissions:/opt/gitea') }
         it { is_expected.to contain_exec('permissions:/opt/gitea/gitea') }
         it { is_expected.to contain_exec('permissions:/opt/gitea/data/attachments') }
+        it { is_expected.to contain_exec('permissions:/opt/gitea/data/lfs') }
         it { is_expected.to contain_exec('permissions:/var/log/gitea') }
         it { is_expected.to contain_exec('permissions:/var/git') }
       end

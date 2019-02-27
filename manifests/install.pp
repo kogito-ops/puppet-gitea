@@ -40,6 +40,12 @@
 # * `attachment_directory`
 # Directory for storing attachments. Default: '/opt/gitea/data/attachments'
 #
+# * `lfs_enabled`
+# Make use of git-lfs. Default: false
+#
+# * `lfs_content_directory`
+# Directory for storing LFS data. Default: '/opt/gitea/data/lfs'
+#
 # * `manage_service`
 # Should we manage a service definition for Gitea?
 #
@@ -63,7 +69,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
+# Copyright 2016-2019 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::install (
   Enum['present','absent'] $package_ensure = $gitea::package_ensure,
@@ -78,6 +84,8 @@ class gitea::install (
   String $repository_root        = $gitea::repository_root,
   String $log_directory          = $gitea::log_directory,
   String $attachment_directory   = $gitea::attachment_directory,
+  Boolean $lfs_enabled           = $gitea::lfs_enabled,
+  String $lfs_content_directory  = $gitea::lfs_content_directory,
 
   Boolean $manage_service        = $gitea::manage_service,
   String $service_template       = $gitea::service_template,
@@ -111,6 +119,13 @@ class gitea::install (
     owner  => $owner,
     group  => $group,
     notify => Exec["permissions:${attachment_directory}"],
+  }
+
+  -> file { $lfs_content_directory:
+    ensure => 'directory',
+    owner  => $owner,
+    group  => $group,
+    notify => Exec["permissions:${lfs_content_directory}"],
   }
 
   -> file { $log_directory:
@@ -176,6 +191,12 @@ class gitea::install (
 
   exec { "permissions:${attachment_directory}":
     command     => "chown -Rf ${owner}:${group} ${attachment_directory}",
+    path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
+    refreshonly => true,
+  }
+
+  exec { "permissions:${lfs_content_directory}":
+    command     => "chown -Rf ${owner}:${group} ${lfs_content_directory}",
     path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     refreshonly => true,
   }

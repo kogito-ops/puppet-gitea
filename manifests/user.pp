@@ -32,7 +32,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
+# Copyright 2016-2019 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::user (
   Boolean $manage_user   = $gitea::manage_user,

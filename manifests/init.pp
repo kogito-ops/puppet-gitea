@@ -57,6 +57,12 @@
 # * `attachment_directory`
 # Directory for storing attachments. Default: '/opt/gitea/data/attachments'
 #
+# * `lfs_enabled`
+# Make use of git-lfs. Default: false
+#
+# * `lfs_content_directory`
+# Directory for storing LFS data. Default: '/opt/gitea/data/lfs'
+#
 # * `configuration_sections`
 # INI style settings for configuring Gitea.
 #
@@ -90,7 +96,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
+# Copyright 2016-2019 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea (
   Enum['present','absent'] $package_ensure,
@@ -112,6 +118,8 @@ class gitea (
   String $repository_root,
   String $log_directory,
   String $attachment_directory,
+  Boolean $lfs_enabled,
+  String $lfs_content_directory,
 
   Hash $configuration_sections,
 

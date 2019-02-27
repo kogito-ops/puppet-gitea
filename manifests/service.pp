@@ -23,7 +23,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2016-2017 Daniel S. Reichenbach <https://kogitoapp.com>
+# Copyright 2016-2019 Daniel S. Reichenbach <https://kogitoapp.com>
 #
 class gitea::service (
   Boolean $manage_service        = $gitea::manage_service,
