@@ -11,7 +11,7 @@ describe 'gitea::install', type: :class do
         let :params do
           {
             package_ensure: 'present',
-            base_url: 'https://github.com/go-gitea/gitea/releases/download',
+            base_url: 'https://dl.gitea.io/gitea',
             version: '1.1.0',
             checksum: '59cd3fb52292712bd374a215613d6588122d93ab19d812b8393786172b51d556',
             checksum_type: 'sha256',

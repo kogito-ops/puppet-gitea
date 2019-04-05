@@ -150,7 +150,7 @@ class gitea::install (
       }
     }
 
-    $source_url="${base_url}/v${version}/gitea-${version}-${kernel_down}-${arch}"
+    $source_url="${base_url}/${version}/gitea-${version}-${kernel_down}-${arch}"
 
     remote_file { 'gitea':
       ensure        => $package_ensure,

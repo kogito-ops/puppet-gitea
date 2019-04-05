@@ -8,7 +8,7 @@ gitea::manage_home: true
 gitea::owner: 'git'
 gitea::group: 'git'
 gitea::home: ~
-gitea::base_url: 'https://github.com/go-gitea/gitea/releases/download'
+gitea::base_url: 'https://dl.gitea.io/gitea'
 gitea::version: '1.7.2'
 gitea::checksum: 'b84098f0b0018071aa1ba5522078820494def29e6385c25c581c4362a4e463b3'
 gitea::checksum_type: 'sha256'
