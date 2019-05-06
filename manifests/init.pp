@@ -33,6 +33,9 @@
 # * `home`
 # Qualified path to the users' home directory. Default: empty
 #
+# * `proxy`
+# Download via specified proxy. Default: empty
+#
 # * `base_url`
 # Download base URL. Default: Github. Can be used for local mirrors.
 #
@@ -110,6 +113,7 @@ class gitea (
   String $group,
   Optional[String] $home,
 
+  Optional[String] $proxy,
   String $base_url,
   String $version,
   String $checksum,
