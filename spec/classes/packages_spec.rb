@@ -11,13 +11,13 @@ describe 'gitea::packages', type: :class do
         if facts[:osfamily] == 'Debian'
           let :params do
             {
-              dependencies: %w[curl git-core tar],
+              dependencies: %w[curl git tar],
               dependencies_ensure: 'present',
             }
           end
 
           it { is_expected.to contain_package('curl') }
-          it { is_expected.to contain_package('git-core') }
+          it { is_expected.to contain_package('git') }
           it { is_expected.to contain_package('tar') }
         end
       end
