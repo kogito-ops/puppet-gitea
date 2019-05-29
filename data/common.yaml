@@ -8,6 +8,7 @@ gitea::manage_home: true
 gitea::owner: 'git'
 gitea::group: 'git'
 gitea::home: ~
+gitea::proxy: ~
 gitea::base_url: 'https://dl.gitea.io/gitea'
 gitea::version: '1.8.0'
 gitea::checksum: '917497fd7ac3bd3d1c953cf11a117ccb0d7bcadb86243d3bc031fb4c9253c7ff'
