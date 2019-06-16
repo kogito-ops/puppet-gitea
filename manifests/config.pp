@@ -33,6 +33,9 @@
 # * `lfs_content_directory`
 # Directory for storing LFS data. Default: '/opt/gitea/data/lfs'
 #
+# * `robots_txt`
+# Allows to provide a http://www.robotstxt.org/ file to restrict crawling.
+#
 # Authors
 # -------
 #
@@ -53,6 +56,7 @@ class gitea::config (
   String $attachment_directory   = $gitea::attachment_directory,
   String $lfs_content_directory  = $gitea::lfs_content_directory,
   Boolean $lfs_enabled           = $gitea::lfs_enabled,
+  String $robots_txt             = $gitea::robots_txt,
   ) {
 
   $required_settings = {
@@ -102,5 +106,12 @@ class gitea::config (
     command     => "chown -Rf ${owner}:${group} ${installation_directory}/custom",
     path        => '/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin',
     refreshonly => true,
+  }
+
+  if $robots_txt != '' {
+    file { "${installation_directory}/custom/robots.txt":
+      mode   => '0644',
+      source => $robots_txt,
+    }
   }
 }

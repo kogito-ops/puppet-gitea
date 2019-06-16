@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 **Features**
 
+- Added `gitea::robots_txt` allowing to restrict creepy crawlers
 - Added `gitea::lfs_content_directory` to allow customized LFS file paths
 
 **Bugfixes**

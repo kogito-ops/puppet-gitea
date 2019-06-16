@@ -84,6 +84,9 @@
 # * `service_mode`
 # File mode for the created service definition.
 #
+# * `robots_txt`
+# Allows to provide a http://www.robotstxt.org/ file to restrict crawling.
+#
 # Examples
 # --------
 #
@@ -132,6 +135,8 @@ class gitea (
   String $service_path,
   String $service_provider,
   String $service_mode,
+
+  String $robots_txt,
   ) {
 
   class { '::gitea::packages': }
