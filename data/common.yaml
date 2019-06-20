@@ -14,7 +14,7 @@ gitea::version: '1.8.0'
 gitea::checksum: '917497fd7ac3bd3d1c953cf11a117ccb0d7bcadb86243d3bc031fb4c9253c7ff'
 gitea::checksum_type: 'sha256'
 gitea::installation_directory: '/opt/gitea'
-gitea::repository_root: '/var/git'
+gitea::repository_root: '/var/lib/gitea'
 gitea::log_directory: '/var/log/gitea'
 gitea::attachment_directory: '/opt/gitea/data/attachments'
 gitea::lfs_enabled: false
