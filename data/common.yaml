@@ -25,4 +25,4 @@ gitea::service_template: 'gitea/systemd.erb'
 gitea::service_path: '/lib/systemd/system/gitea.service'
 gitea::service_provider: 'systemd'
 gitea::service_mode: '0644'
-gitea::robots_txt: ~
+gitea::robots_txt: ''
